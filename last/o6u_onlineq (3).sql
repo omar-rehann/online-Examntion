@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Feb 17, 2025 at 10:24 PM
+-- Generation Time: Feb 21, 2025 at 10:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -181,18 +181,6 @@ CREATE TABLE `course` (
   `instructorID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `course`
---
-
-INSERT INTO `course` (`id`, `name`, `parent`, `instructorID`) VALUES
-(62, '1', NULL, 26),
-(63, '222', 62, 26),
-(64, 'first course', NULL, 27),
-(65, 'first Topic', 64, 27),
-(66, 'linear alegabra', NULL, 28),
-(67, 'mid term', 66, 28);
-
 -- --------------------------------------------------------
 
 --
@@ -207,15 +195,6 @@ CREATE TABLE `groups` (
   `instructorID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `name`, `assignedTest`, `settingID`, `instructorID`) VALUES
-(9, 'ali', NULL, NULL, 26),
-(10, 'first group', NULL, NULL, 27),
-(11, 'A', 36, 76, 28);
-
 -- --------------------------------------------------------
 
 --
@@ -227,13 +206,6 @@ CREATE TABLE `groups_has_students` (
   `studentID` int(11) NOT NULL,
   `joinDate` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `groups_has_students`
---
-
-INSERT INTO `groups_has_students` (`groupID`, `studentID`, `joinDate`) VALUES
-(11, 201234567, '2025-02-17 22:41:19');
 
 -- --------------------------------------------------------
 
@@ -269,10 +241,7 @@ CREATE TABLE `instructor` (
 --
 
 INSERT INTO `instructor` (`id`, `name`, `email`, `password`, `phone`, `password_token`, `token_expire`, `suspended`, `isAdmin`) VALUES
-(7, 'System Administrator', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '', NULL, NULL, 0, 1),
-(26, 'ammar', 'ammar@gmail.com', '25d55ad283aa400af464c76d713c07ad', '', NULL, NULL, 0, 1),
-(27, 'huda', 'huda@gmail.com', '25d55ad283aa400af464c76d713c07ad', '07809720517', NULL, NULL, 0, 0),
-(28, 'jamal jado', 'jamal@gmail.com', '7592628bce37dd14e0b36ea66d5ba847', '01276612118', NULL, NULL, 0, 0);
+(38, 'mostafa heraji', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '01276612118', NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -283,123 +252,6 @@ INSERT INTO `instructor` (`id`, `name`, `email`, `password`, `phone`, `password_
 CREATE TABLE `instructor_invitations` (
   `code` varchar(36) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `instructor_invitations`
---
-
-INSERT INTO `instructor_invitations` (`code`) VALUES
-('3436379149'),
-('1312453377'),
-('539210089'),
-('1674630452'),
-('3744290488'),
-('864598149'),
-('3248271963'),
-('1787738721'),
-('3196124642'),
-('532171308'),
-('2723223231'),
-('2185838764'),
-('2545306565'),
-('2874152779'),
-('1086485958'),
-('2222957120'),
-('877293811'),
-('1631290451'),
-('1531707478'),
-('236751871'),
-('148687258'),
-('1992997360'),
-('4106573718'),
-('2775996231'),
-('3568843964'),
-('2026107465'),
-('1564106584'),
-('3132078862'),
-('117311189'),
-('3311579761'),
-('4077317859'),
-('1783626138'),
-('3514693432'),
-('4041026664'),
-('3139201766'),
-('580160503'),
-('4202771515'),
-('4268978939'),
-('3318004562'),
-('1234787235'),
-('839183929'),
-('2921875704'),
-('609458657'),
-('3872747522'),
-('2947251994'),
-('1016969511'),
-('2648424452'),
-('1258454550'),
-('2383856834'),
-('3153797934'),
-('1797035629'),
-('585013224'),
-('1216893643'),
-('1088299832'),
-('358495416'),
-('848558203'),
-('1102213090'),
-('1286406505'),
-('332146294'),
-('1155120592'),
-('2378742868'),
-('3935557185'),
-('3836907877'),
-('3210208983'),
-('588454037'),
-('1833890942'),
-('70513812'),
-('423772056'),
-('4190370638'),
-('1531441236'),
-('4022909221'),
-('1169577104'),
-('1362625431'),
-('4029146575'),
-('2145234280'),
-('2145458316'),
-('2322854885'),
-('1668422571'),
-('2835878077'),
-('3203506061'),
-('3917381082'),
-('3900456002'),
-('2590793991'),
-('2959313765'),
-('2457178678'),
-('2497901998'),
-('2440229972'),
-('1764908271'),
-('3133973013'),
-('1435313637'),
-('3044961426'),
-('1564720312'),
-('3987270514'),
-('3228301631'),
-('4128396261'),
-('1379081102'),
-('1993513991'),
-('3653415330'),
-('3387494218'),
-('3862202104'),
-('3823950470'),
-('3502156019'),
-('132801621'),
-('483119632'),
-('224998045'),
-('4132551462'),
-('2803516455'),
-('3720358475'),
-('2284280245'),
-('3044255350'),
-('4293298884');
 
 -- --------------------------------------------------------
 
@@ -416,13 +268,6 @@ CREATE TABLE `mails` (
   `sent` tinyint(1) DEFAULT 0,
   `type` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `mails`
---
-
-INSERT INTO `mails` (`id`, `resultID`, `studentID`, `instructorID`, `sends_at`, `sent`, `type`) VALUES
-(5, NULL, 201234567, NULL, '2025-02-17 21:17:11', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -442,15 +287,6 @@ CREATE TABLE `question` (
   `deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `question`
---
-
-INSERT INTO `question` (`id`, `question`, `type`, `points`, `difficulty`, `isTrue`, `instructorID`, `courseID`, `deleted`) VALUES
-(177, '<p>اا</p>', 0, 1, 1, 1, 27, 65, 0),
-(178, '<p>what is the subspace</p>', 5, 5, 1, 1, 28, 67, 0),
-(179, '<p>what is the object orinted</p>', 5, 10, 2, 1, 28, 67, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -465,16 +301,6 @@ CREATE TABLE `question_answers` (
   `isCorrect` tinyint(1) DEFAULT 1,
   `points` int(2) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `question_answers`
---
-
-INSERT INTO `question_answers` (`id`, `questionID`, `answer`, `matchAnswer`, `isCorrect`, `points`) VALUES
-(908, 177, '<p>1</p>', NULL, 1, 1),
-(909, 177, '<p>2</p>', NULL, 0, 1),
-(910, 177, '<p>3</p>', NULL, 0, 1),
-(911, 177, '<p>4</p>', NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -496,13 +322,6 @@ CREATE TABLE `result` (
   `score` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `result`
---
-
-INSERT INTO `result` (`id`, `studentID`, `testID`, `groupID`, `settingID`, `startTime`, `endTime`, `isTemp`, `hostname`, `ipaddr`, `score`) VALUES
-(36, 201234567, 36, 11, 76, '2025-02-17 20:53:05', '2025-02-17 20:53:15', 0, 'DESKTOP-P8VG2E9', '::1', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -519,16 +338,6 @@ CREATE TABLE `result_answers` (
   `points` int(3) DEFAULT -1,
   `isCorrect` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `result_answers`
---
-
-INSERT INTO `result_answers` (`id`, `resultID`, `questionID`, `answerID`, `isTrue`, `textAnswer`, `points`, `isCorrect`) VALUES
-(454, 36, 179, NULL, 0, 'bbb', -1, 0),
-(455, 36, 178, NULL, 0, 'nnnnn', -1, 0),
-(456, 36, 179, NULL, 0, 'bbb', -1, 0),
-(457, 36, 178, NULL, 0, 'nnnnn', -1, 0);
 
 -- --------------------------------------------------------
 
@@ -553,7 +362,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `name`, `email`, `phone`, `password`, `password_token`, `token_expire`, `suspended`, `sessionID`) VALUES
-(201234567, 'omar rehan', 'omar@gmail.com', '01276612118', '276506d3704c67d67ff9a500be50dd95', 'd2e027a80f2e1c6107867afd5daa483e3fff491b6f88d91de4', '2025-02-17 21:47:11', 0, 'i486qsi1s0gudki190t4pfmjve');
+(201234567, 'omar rehan', 'omar@gmail.com', '01276112119', '276506d3704c67d67ff9a500be50dd95', NULL, NULL, 0, 'ugvf83kao77ac6k0u9g3imcq5v');
 
 -- --------------------------------------------------------
 
@@ -593,15 +402,6 @@ CREATE TABLE `test` (
   `instructorID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `test`
---
-
-INSERT INTO `test` (`id`, `name`, `courseID`, `deleted`, `instructorID`) VALUES
-(34, 'test', 62, 0, 26),
-(35, 'test', 64, 0, 27),
-(36, 'mid exam', 66, 0, 28);
-
 -- --------------------------------------------------------
 
 --
@@ -613,14 +413,6 @@ CREATE TABLE `tests_has_questions` (
   `questionID` int(11) DEFAULT NULL,
   `rand` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `tests_has_questions`
---
-
-INSERT INTO `tests_has_questions` (`testID`, `questionID`, `rand`) VALUES
-(36, 178, NULL),
-(36, 179, NULL);
 
 -- --------------------------------------------------------
 
@@ -651,13 +443,6 @@ CREATE TABLE `test_random_questions` (
   `difficulty` int(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `test_random_questions`
---
-
-INSERT INTO `test_random_questions` (`testID`, `courseID`, `questionsCount`, `difficulty`) VALUES
-(35, 65, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -678,13 +463,6 @@ CREATE TABLE `test_settings` (
   `passPercent` int(3) DEFAULT NULL,
   `instructorID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `test_settings`
---
-
-INSERT INTO `test_settings` (`id`, `startTime`, `endTime`, `duration`, `random`, `prevQuestion`, `viewAnswers`, `releaseResult`, `sendToStudent`, `sendToInstructor`, `passPercent`, `instructorID`) VALUES
-(76, '2025-02-17 22:44:00', '2025-02-17 23:44:00', 60, 1, 0, 0, 1, 1, 1, 60, 28);
 
 --
 -- Indexes for dumped tables
@@ -853,31 +631,31 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `mails`
 --
 ALTER TABLE `mails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
 
 --
 -- AUTO_INCREMENT for table `question_answers`
@@ -889,31 +667,31 @@ ALTER TABLE `question_answers`
 -- AUTO_INCREMENT for table `result`
 --
 ALTER TABLE `result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `result_answers`
 --
 ALTER TABLE `result_answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=458;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=470;
 
 --
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `test_invitations`
 --
 ALTER TABLE `test_invitations`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `test_settings`
 --
 ALTER TABLE `test_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- Constraints for dumped tables

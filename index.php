@@ -18,19 +18,45 @@
     <!-- start header -->
     <header id="home" class="block">
 
-        <div class="header-overlay d-flex align-items-center">
-            <div class="container">
-                <div class="header-title d-flex justify-content-center">
-                    <div>
-                        <h1 class="text-white">ONLINE EXAM SYSTEM</h1>
-                        <div class="d-flex justify-content-center">
-                            <a class="btn btn-success text-white title-link mt-2" style="margin-right:20px" href="student">I'm Student</a>
-                            <a class="btn btn-primary text-white title-link mt-2" href="instructor">I'm Instructor</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="header-overlay d-flex align-items-center">
+    <div class="header-overlay d-flex align-items-center">
+    <div class="container d-flex justify-content-center">
+        <div class="header-box text-center p-4">
+            <h1 class="text-white">ONLINE EXAM SYSTEM</h1>
+            <div class="d-flex justify-content-center mt-3">
+                <a class="btn btn-success text-white title-link mx-2" href="student">I'm Student</a>
+                <a class="btn btn-primary text-white title-link mx-2" href="instructor">I'm Instructor</a>
             </div>
         </div>
+    </div>
+</div>
+
+<style>
+    .header-overlay {
+        background: rgba(0, 0, 0, 0.3); /* طبقة شفافة */
+        min-height: 100vh;
+    }
+    
+    .header-box {
+        background: rgba(0, 0, 0, 0.1); /* خلفية داكنة للبوكس */
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 100%;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn {
+        transition: 0.3s;
+        font-size: 18px;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+</div>
+
 
     </header>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -38,7 +64,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.1.18/jquery.backstretch.min.js" integrity="sha256-OZZMwc3o7txR3vFfunl0M9yk3SayGp444eZdL9QDi1Y=" crossorigin="anonymous"></script>	  <script type="text/javascript">
 	  jQuery(document).ready(function(){
-		$.backstretch("https://i.imgur.com/qnL1prM.jpg");
+		$.backstretch("photo.jpg");
 	  });
 	  </script>
 	 <script src="style/js/home.js"></script>

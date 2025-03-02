@@ -1,4 +1,3 @@
-
 <?php
 if (!defined('NotDirectAccess')){
 	die('Direct Access is not allowed to this page');
@@ -21,32 +20,28 @@ require_once 'header.php';
 										<span class="badge badge-pill badge-success">Success</span>'. $info . '</div>';}
 										unset($_SESSION['info']);
 										?>
-                <div class="login-form">
+                <div class="login-form rounded">
                     <form action="app/controller/instructor.inc.php?action=register" method="post">
-											<div class="form-group">
-													<label>Name</label>
-													<input type="text" name="name" class="form-control" placeholder="Name" min="5" max="50">
-											</div>
-											<div class="form-group">
-													<label>Invitation Code</label>
-													<input type="text" name="invite" class="form-control" <?php echo (isset($_GET['invite'])?('value="' .$_GET['invite'].'" readonly'):'') ?>>
-											</div>
-												<div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email" min=5>
-                    		</div>
-												<div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="number" name="phone" class="form-control" placeholder="Phone Number" min=11>
-                    		</div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="Password" min=6>
-                				</div>
-                          <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
-                          <div class="register-link m-t-15 text-center">
-                              <p>Already have account ? <a href="?login"> Sign in</a></p>
-                          </div>
+										<div class="form-group">
+											<label>Name</label>
+											<input type="text" name="name" class="form-control" placeholder="Name" min="5" max="50">
+										</div>
+										<div class="form-group">
+	                            <label>Email address</label>
+	                            <input type="email" name="email" class="form-control" placeholder="Email" min=5>
+	                    		</div>
+										<div class="form-group">
+	                            <label>Phone Number</label>
+	                            <input type="number" name="phone" class="form-control" placeholder="Phone Number" min=11>
+	                    		</div>
+	                        <div class="form-group">
+	                            <label>Password</label>
+	                            <input type="password" name="password" class="form-control" placeholder="Password" min=6>
+	                			</div>
+	                          <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+	                          <div class="register-link m-t-15 text-center">
+	                              <p>Already have account ? <a href="?login"> Sign in</a></p>
+	                          </div>
                     </form>
                 </div>
             </div>

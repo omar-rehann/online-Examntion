@@ -8,7 +8,7 @@ require_once 'header.php';
 <body class="login-body" style="padding:20px">
 	<div class="preloader"></div>
 	<div class="login-wrap">
-<div class="login-html">
+<div class="login-html rounded">
 		<?php if(isset($_GET['email']) && isset($_GET['token'])){ ?>
 			<form class="login-form" id="resetForm" action="app/controller/student.inc.php?action=resetPasswordWithToken" method="post">
 				<div class="group">

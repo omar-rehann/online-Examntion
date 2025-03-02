@@ -18,7 +18,7 @@ require_once 'header.php';
 				foreach($_SESSION['info'] as $info){
 					echo '<div class="alert alert-success" role="alert">'. $info . '</div>';}
 					unset($_SESSION['info']); ?>
-                <div class="login-form">
+                <div class="login-form rounded">
                     <form action="app/controller/instructor.inc.php?action=login" method="post">
                         <div class="form-group">
                             <label>Email</label>
@@ -34,7 +34,7 @@ require_once 'header.php';
                             </label>
 													</div>
                                 <button type="submit" class="btn btn-primary">Login</button>
-                                <a href="?register" class="btn btn-secondary mt-4">Register</a>
+                                <a href="?register" class="btn btn-dark mt-4">Register</a>
 
                     </form>
                 </div>
@@ -42,6 +42,7 @@ require_once 'header.php';
         </div>
     </div>
 <?php
+
 define('ContainsBackground', true);
 require_once 'footer.php';
 ?>

@@ -5,7 +5,7 @@ class dbh {
   private $port = "3307"; // تأكد من المنفذ الصحيح
   private $username = "root";
   private $pwd = ""; // بدون كلمة مرور إذا لم تقم بتعيينها
-  private $dbName = "o6u_onlineq";
+  private $dbName = "final";
 
   public function connect(){
     try {

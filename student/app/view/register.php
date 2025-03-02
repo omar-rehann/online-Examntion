@@ -7,7 +7,7 @@ require_once 'header.php';
 <body class="login-body">
 	<div class="preloader"></div>
 	<div class="login-wrap" style="min-height: 750px;">
-<div class="login-html">
+<div class="login-html rounded">
 	<label for="tab-1" class="tab text-center">Register</label>
 	<div class="login-form">
 		<?php if(isset($_GET['id'])){

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include_once 'autoloader.inc.php';
@@ -18,7 +17,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'login'){
   }
 }else if (isset($_GET['action']) && $_GET['action'] == 'register'){
   $name = !empty($_POST['name']) ? trim($_POST['name']) : null;
-  $invite = !empty($_POST['invite']) ? trim($_POST['invite']) : null;
   $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
   $phone = !empty($_POST['phone']) ? trim($_POST['phone']) : null;
   $pass = !empty($_POST['password']) ? trim($_POST['password']) : null;
@@ -27,16 +25,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'login'){
   if ($inst->checkEmail($email)){
     $_SESSION["error"][] = 'Email Already Exists!';
   }
-  if (!$inst->isValidInvite($invite)){
-    $_SESSION["error"][] = 'Invitation Code is not valid';
-  }
   if(!is_numeric($phone)) {
       $_SESSION["error"][] = 'Phone Number is not valid';
   }
   if(isset($_SESSION["error"])){
     header("Location: ../../?register");
   }else{
-  $inst->register($name,$hashedpwd,$email,$phone,$invite);
+  $inst->register($name,$hashedpwd,$email,$phone);
   $_SESSION["info"][] = 'You account has been registered!<br> You can login now';
   header("Location: ../../?login");
 }
@@ -112,24 +107,4 @@ else if (isset($_GET['action']) && $_GET['action'] == 'resetPassword')
     $_SESSION['mydata']= $mydata;
   }
   header('Location: ' . $_SERVER['HTTP_REFERER']);
-
-}else if (isset($_GET['action']) && $_GET['action'] == 'updatePassword'){
-  $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
-  $password = !empty($_POST['password']) ? trim($_POST['password']) : null;
-  $repassword = !empty($_POST['repassword']) ? trim($_POST['repassword']) : null;
-  if ($password != $repassword){
-      $_SESSION["error"][] = 'Password fields does not match';
-      header('Location: ' . $_SERVER['HTTP_REFERER']);
-  }
-  if (strlen($password) < 6){
-      $_SESSION["error"][] = 'Password is too short';
-      header('Location: ' . $_SERVER['HTTP_REFERER']);
-  }
-  if(!isset($_SESSION["error"])){
-  $hashedpwd = md5($password);
-  $inst = new instructor();
-  $inst-> updatePassword($email,$hashedpwd);
-  $_SESSION["info"][] = 'Your Password Has Been Successfully Updated';
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
-}
 }

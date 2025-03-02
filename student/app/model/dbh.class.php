@@ -3,7 +3,7 @@ class dbh {
   private $host = "localhost";
   private $username = "root";
   private $pwd = "";
-  private $dbName = "o6u_onlineq";
+  private $dbName = "final";
   private $port = "3307"; // تأكد من إضافة المنفذ
 
   public function connect(){
