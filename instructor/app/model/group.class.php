@@ -1,4 +1,3 @@
-
 <?php
 class group extends dbh{
     public function getAll(){
@@ -49,18 +48,6 @@ class group extends dbh{
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $result;
-    }
-    public function generateInvitations($groupID,$count,$prefix){
-        $stmt = $this->connect()->prepare("SELECT generateGroupInvites(:groupID,:count,:pf);");
-        $stmt->bindparam(":groupID",$groupID);
-        $stmt->bindparam(":count",$count);
-        $stmt->bindparam(":pf",$prefix);
-        $stmt->execute();
-    }
-    public function deleteInvitations($groupID){
-        $stmt = $this->connect()->prepare("DELETE FROM group_invitations where groupID = :groupID");
-        $stmt->bindparam(":groupID",$groupID);
-        $stmt->execute();
     }
     public function deleteOneInvite($code){
         $stmt = $this->connect()->prepare("DELETE FROM group_invitations where code = :code");

@@ -1,7 +1,7 @@
-
 <?php
 
 class result extends dbh{
+
    public function getAll(){
       if($_SESSION['mydata']->isAdmin){
           $stmt = $this->connect()->prepare("SELECT r.id, r.testID, t.name AS testName, s.name AS studentName, 

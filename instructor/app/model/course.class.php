@@ -1,4 +1,3 @@
-
 <?php
 
 class course extends dbh

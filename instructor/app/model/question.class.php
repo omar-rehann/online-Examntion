@@ -1,4 +1,3 @@
-
 <?php
 
 class question extends dbh{

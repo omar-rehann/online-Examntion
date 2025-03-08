@@ -1,4 +1,3 @@
-
 <?php
 
 class instructor extends dbh{

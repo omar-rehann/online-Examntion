@@ -1,4 +1,3 @@
-
 <?php
 
 class report extends dbh{

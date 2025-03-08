@@ -1,8 +1,6 @@
-
 <?php
 
 class admin extends dbh{
-
   public function getAllInstructors(){
       $stmt = $this->connect()->query("SELECT * FROM instructor where !isAdmin");
       $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -17,20 +15,6 @@ class admin extends dbh{
       $stmt = $this->connect()->query("SELECT * FROM student WHERE password is null");
       $result = $stmt->fetchAll(PDO::FETCH_OBJ);
       return $result;
-  }
-  public function getInvitations(){
-      $stmt = $this->connect()->query("SELECT * FROM instructor_invitations");
-      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-      return $result;
-  }
-  public function generateInvitations($count){
-      $stmt = $this->connect()->prepare("CALL generateInstructorInvites(:count);");
-      $stmt->bindparam(":count",$count);
-      $stmt->execute();
-  }
-  public function deleteInvitations(){
-      $stmt = $this->connect()->prepare("DELETE FROM instructor_invitations");
-      $stmt->execute();
   }
   public function getStudentResults($studentID){
         $stmt = $this->connect()->prepare("SELECT r.id,r.testID,t.name AS testName,s.name AS studentName,r.studentID,r.startTime,r.endTime,

@@ -1,4 +1,3 @@
-
 <?php
 
 class student extends dbh{
