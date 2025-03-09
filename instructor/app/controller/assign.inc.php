@@ -29,15 +29,6 @@ include_once 'autoloader.inc.php';
     $newAssign->AssignToGroup($groupID,$testID);
     header("Location: ../../?groups");exit;
   }
-}else if (isset($_GET['deleteLink']) && (!empty($_GET['deleteLink']))){
-    if(is_numeric($_GET['deleteLink'])){
-      $_assign = new assign();
-      $_assign->deleteLink($_GET['deleteLink']);
-    }
-    if($_SERVER['HTTP_REFERER'])
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    else
-    header('Location: ?tests');
 }else if (isset($_GET['deleteAssignedTest'])){
   $id = !empty($_GET['deleteAssignedTest']) ? trim($_GET['deleteAssignedTest']) : null;
   $_assign = new assign();

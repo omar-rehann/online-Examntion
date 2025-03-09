@@ -141,33 +141,6 @@ class assign extends dbh{
           $this->deleteUnusedSettings();
           return true;
         }
-    public function AssignToLink($name,$testID,$useLimit){
-      try
-        {
-          $stmt = $this->connect()->prepare("INSERT INTO test_invitations(name,testID,settingID,useLimit,instructorID)
-          VALUES(:name,:testID,(SELECT max(id) FROM test_settings where instructorID = :instructorID),:useLimit,:instructorID)");
-          $stmt->bindparam(":name",$name);
-          $stmt->bindparam(":testID",$testID);
-          $stmt->bindparam(":useLimit",$useLimit);
-          $stmt->bindparam(":instructorID",$_SESSION['mydata']->id);
-          $stmt->execute();
-          return true;
-        }
-      catch(PDOException $e)
-        {
-           echo $e->getMessage();
-           return false;
-        }
-     }
-     public function deleteLink($id)
-      {
-        $stmt = $this->connect()->prepare("DELETE FROM test_invitations WHERE id = :id and instructorID = :aid");
-        $stmt->bindparam(":id",$id);
-        $stmt->bindparam(":aid",$_SESSION['mydata']->id);
-        $stmt->execute();
-        $this->deleteUnusedSettings();
-        return true;
-      }
      public function deleteUnusedSettings()
       {
         $stmt = $this->connect()->prepare("DELETE FROM test_settings
